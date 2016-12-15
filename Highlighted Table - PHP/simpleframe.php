@@ -55,129 +55,135 @@ class simpleframe
 }
 ?>
 
-simpleframe.css
-table.simpleframe
-{
-	table-layout:fixed;
-	border-collapse:collapse;
-	padding:0px;
-	margin:0px;
-	height:auto;
-	width:auto;
-}
-table.simpleframe td
-{
-	
-}
-table.simpleframe td.cella
-{
-	background:url('../img/simpleframe/a.png') no-repeat;
-	width:7px;
-	height:7px;
-	padding:0px;
-	margin:0px;
-}
-table.simpleframe td.cellb
-{
-	background:url('../img/simpleframe/b.png') repeat-x;
-	width:auto;
-	height:7px;
-	padding:0px;
-	margin:0px;
-}
-table.simpleframe td.cellc
-{
-	background:url('../img/simpleframe/c.png') no-repeat;
-	width:7px;
-	height:7px;
-	padding:0px;
-	margin:0px;
-}
-table.simpleframe td.celld
-{
-	background:url('../img/simpleframe/d.png') repeat-y;
-	width:7px;
-	height:auto;
-	padding:0px;
-	margin:0px;
-}
-table.simpleframe td.celle
-{
-	width:auto;
-	height:auto;
-	padding:0px;
-	margin:0px;
-}
-table.simpleframe td.cellf
-{
-	background:url('../img/simpleframe/f.png') repeat-y;
-	width:7px;
-	height:auto;
-	padding:0px;
-	margin:0px;
-}
-table.simpleframe td.cellg
-{
-	background:url('../img/simpleframe/g.png') no-repeat;	
-	width:7px;
-	height:7px;
-	padding:0px;
-	margin:0px;
-}
-table.simpleframe td.cellh
-{
-	background:url('../img/simpleframe/h.png') repeat-x;
-	width:auto;
-	height:7px;
-	padding:0px;
-	margin:0px;
-}
-table.simpleframe td.celli
-{
-	background:url('../img/simpleframe/i.png') no-repeat;
-	width:7px;
-	height:7px;
-	padding:0px;
-	margin:0px;
-}
-table.simpleframe div.celltext
-{
-	background:white;
-	width:100%;
-	height:100%;
-}
-/* List in a table */
-table.list
-{
-}
-table.list td
-{
-	padding: 3px;
-	font-family: "Franklin Gothic Medium","Helvetica","Arial",sans-serif;
-	font-size: 12px;
-}
-table.list .head
-{
-	font-weight: bold;
-	color: white;
-	background: #306;
-}
-table.list .odd
-{
-	background: #F0FFF0;
-}
-table.list .even
-{
-	background:white;
-}
-
-Example Usage:
-<?
-$pf = new pictureframe();
-$pf -> top(); 
-?>
-	<a href="http://www.seijinohki.net/"><img src="wd/01.png"><br><br>
-	Seijinohki</a>
-<?
-$pf -> bottom();
-?>
+<html>
+	<head>
+		<style type="text/css">
+			table.simpleframe
+			{
+				table-layout:fixed;
+				border-collapse:collapse;
+				padding:0px;
+				margin:0px;
+				height:auto;
+				width:auto;
+			}
+			table.simpleframe td
+			{
+				
+			}
+			table.simpleframe td.cella
+			{
+				background:url('../img/simpleframe/a.png') no-repeat;
+				width:7px;
+				height:7px;
+				padding:0px;
+				margin:0px;
+			}
+			table.simpleframe td.cellb
+			{
+				background:url('../img/simpleframe/b.png') repeat-x;
+				width:auto;
+				height:7px;
+				padding:0px;
+				margin:0px;
+			}
+			table.simpleframe td.cellc
+			{
+				background:url('../img/simpleframe/c.png') no-repeat;
+				width:7px;
+				height:7px;
+				padding:0px;
+				margin:0px;
+			}
+			table.simpleframe td.celld
+			{
+				background:url('../img/simpleframe/d.png') repeat-y;
+				width:7px;
+				height:auto;
+				padding:0px;
+				margin:0px;
+			}
+			table.simpleframe td.celle
+			{
+				width:auto;
+				height:auto;
+				padding:0px;
+				margin:0px;
+			}
+			table.simpleframe td.cellf
+			{
+				background:url('../img/simpleframe/f.png') repeat-y;
+				width:7px;
+				height:auto;
+				padding:0px;
+				margin:0px;
+			}
+			table.simpleframe td.cellg
+			{
+				background:url('../img/simpleframe/g.png') no-repeat;	
+				width:7px;
+				height:7px;
+				padding:0px;
+				margin:0px;
+			}
+			table.simpleframe td.cellh
+			{
+				background:url('../img/simpleframe/h.png') repeat-x;
+				width:auto;
+				height:7px;
+				padding:0px;
+				margin:0px;
+			}
+			table.simpleframe td.celli
+			{
+				background:url('../img/simpleframe/i.png') no-repeat;
+				width:7px;
+				height:7px;
+				padding:0px;
+				margin:0px;
+			}
+			table.simpleframe div.celltext
+			{
+				background:white;
+				width:100%;
+				height:100%;
+			}
+			/* List in a table */
+			table.list
+			{
+			}
+			table.list td
+			{
+				padding: 3px;
+				font-family: "Franklin Gothic Medium","Helvetica","Arial",sans-serif;
+				font-size: 12px;
+			}
+			table.list .head
+			{
+				font-weight: bold;
+				color: white;
+				background: #306;
+			}
+			table.list .odd
+			{
+				background: #F0FFF0;
+			}
+			table.list .even
+			{
+				background:white;
+			}
+		</style>
+	</head>
+	<body>
+		Example Usage:
+		<?
+		$pf = new pictureframe();
+		$pf -> top(); 
+		?>
+			<a href="http://www.seijinohki.net/"><img src="wd/01.png"><br><br>
+			Seijinohki</a>
+		<?
+		$pf -> bottom();
+		?>
+	</body>
+</html>
