@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory
+        android:title="Server Settings">
+	    <EditTextPreference
+	        android:key="settings_address" 
+	        android:id="@+id/settings_address"
+	        android:hint="@string/address"
+	        android:orderInCategory="90"
+	        android:title="Server Address"
+	        />
+	    <EditTextPreference 
+	        android:key="settings_port" 
+	        android:id="@+id/settings_port"
+	        android:hint="@string/port"
+	        android:orderInCategory="100" 
+	        android:title="Listening Port"
+	        />
+	    <EditTextPreference 
+	        android:key="settings_serial" 
+	        android:id="@+id/settings_serial"
+	        android:hint="@string/serial"
+	        android:orderInCategory="100" 
+	        android:title="Registration Key"
+	        />
+	    </PreferenceCategory>
+</PreferenceScreen>

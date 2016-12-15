@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+android:padding="10dp"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:configChanges="orientation"
+>
+	<TextView
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:textStyle="bold"
+		android:text="Latitude"
+	/>
+	<TextView
+		android:id="@+id/latitude"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:textColor="#666"
+		android:padding="10dp"
+	/>
+	
+	<TextView
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:textStyle="bold"
+		android:text="Longitude"
+	/>
+	<TextView
+		android:id="@+id/longitude"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:textColor="#666"
+		android:padding="10dp"
+	/>
+	
+	<TextView
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:textStyle="bold"
+		android:text="Connected To:"
+	/>
+	<TextView
+		android:id="@+id/connected"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:textColor="#666"
+		android:padding="10dp"
+	/>
+	
+	<TextView
+		android:id="@+id/myDebug"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:textColor="#66F"
+	/>
+</LinearLayout>
