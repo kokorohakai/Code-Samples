@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+    <head>
+        <title>A very simple and easy to understand example of Ember.</title>
+        <script src="libs/jquery-1.7.2.min.js" language="javascript" type="text/javascript"></script>
+        <script src="libs/handlebars-1.0.0.beta.6.js" language="javascript" type="text/javascript"></script>
+        <script src="libs/ember-1.0.pre.min.js" language="javascript" type="text/javascript"></script>
+        <script language="javascript" type="text/javascript">
+            //when you first begin creating your app, make sure you create the app in Title case. If the app name starts with a lower case letter, the app will be set to private, and unrenderable.
+            var MyApp = Em.Application.create({
+                /******************************************************************************************************************************************************************************************
+                *
+                *                   THE MODEL
+                *
+                * This guy is your data. All of you data will be stored in the object created from this.
+                *
+                * The controller determines how the view will display it.
+                * Notice the view is extended, this means it needs to be initialized, Below we do this and bind it to the controller in the document ready function.
+                *****************************************************************************************************************************************************************************************/
+                MyModel: Em.View.extend({
+                    bgcolor: '', //This won't matter what it is set to.
+                    count: 0
+                }),
+                /******************************************************************************************************************************************************************************************
+                *
+                *                   THE VIEW
+                *
+                * This guy is where you define what will be displayed in your application, you use the controller to determine what the data of this view will look like.
+                * notice the extend, which is making a new copy of the view class, anything done to our controller will be accessible by the view. But anything done to it, will only be
+                * accessible by itself.
+                ******************************************************************************************************************************************************************************************/
+                MyView: Em.View.extend({
+                    headMsg: "This is a Very Basic Ember.js Tutorial.",
+                    //notice this line and the next line are together. You need to bind the view data to the controller with the next line, notice the controller and view names are not the same.
+                    //They cannot be the same, or you'll throw ember into an infinite loop. model in this case comes from our controller, and is our data model. where modelView is our representation
+                    //of the data. Personally, I like the naming convention of naming anything in the view, that has a binding, postfix with View.
+                    modelBinding: "MyApp.MyController.model", //you will notice that bgcolor comes from the model, and is not defined in the controller.
+                    modelView: function(){ return this.get("model"); }.property("model"), //ask Dan what property does.
+                    //now our select box.
+                    selectBoxBinding: "MyApp.MyController.selectBox",
+                    selectBoxView: function() { return this.get("selectBox"); }.property("selectBox") //it's a good idea to return your displayed objects in this way.
+
+                }).observes('MyApp.MyController'),
+                /******************************************************************************************************************************************************************************************
+                *
+                *                   THE CONTROLLER
+                *
+                * This guy tells your view how to display its data.
+                * notice the create, this is creating an instance of our class. Anything done to this class will reflect any extension of the class.
+                ******************************************************************************************************************************************************************************************/
+                MyController: Em.View.create({
+                    selectBox: Em.Object.create({
+                        title: "Select your background Color",
+                        content: [ 'black', 'white' ],
+                        selected: 'white',
+                        model: null,
+                        change: function(){
+                            //since we're inside the object we can just pull selected, without reaching outsize of the namespace.
+                            //if we HAVE to do any jquery manipulation, this is the place to do it, if anywhere.  But only if it's something like this.
+                            $("body").css("background-color",this.get("selected"));
+                            //set the bgcolor to what was selected. Notice we can directly access the property of the model we want to change, and the view updates like magic.
+                            MyApp.MyController.set( "model.bgcolor",this.get("selected") );
+                            //let's increment our counter.
+                            n = MyApp.MyController.get( "model.count" ) + 1;
+                            MyApp.MyController.set( "model.count", n );
+
+                        }.observes('selected'), //on any object, isChanged is a call to a function when data is manipulated on the object. This is shorthand for MyApp.MyController.addObserver(
+                    }),
+                    // Here's a little example of how to do actions with our controller. The button object was removed because of how simple and well this functionality works.
+                    blackButton: function() {
+                        MyApp.MyController.selectBox.set("selected","black");
+                    },
+                    whiteButton: function() {
+                        MyApp.MyController.selectBox.set("selected","white");
+                    }
+                }),
+                /******************************************************************************************************************************************************************************************
+                *
+                *                   THE INITIALIZER
+                *
+                * whatever we need to do on document.ready, in this case, create our model with Initial data and assign it to its controller. Think of them like structs from C++.
+                ******************************************************************************************************************************************************************************************/
+                ready: function(){
+                    this.MyController.set("model", MyApp.MyModel.create({
+                        bgcolor:'black',
+                        count:0
+                    }) );
+                }
+            });
+        </script>
+        <style type="text/css">
+            body {
+                color:#777;
+                font-family:sans-serif;
+            }
+            h1 {
+                font-size:18px;
+                font-weight:bold;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/x-handlebars">
+            {{!-- It's important to understand how to do this kind of comment to debug your code. This is the only way you can comment handlebar code. --}}
+            {{!--
+                Below, we define our main application view, anything inside the view can be references by view.* or you
+                can hard reference (not recommended) each element with myApp.myView.*
+                This is because, When you create the name space here, it creates a view just as if you were to type view = MyApp.MyView.create().
+            --}}
+            {{#view MyApp.MyView}}
+                <h1>{{view.headMsg}}</h1>
+                <!-- here we create out ember object, within our current application view-->
+                {{view.selectBox.title}}: {{view Ember.Select
+                    contentBinding = "view.selectBox.content"
+                    valueBinding = "view.selectBox.selected"
+                }}<br><br>
+                <b>Current background color:</b> {{view.modelView.bgcolor}}<br>
+                <button {{action blackButton on="click" target="MyApp.MyController"}}>Set to Black</button>
+                <button {{action whiteButton on="click" target="MyApp.MyController"}}>Set to White</button><br><br>
+                This has been changed {{view.modelView.count}} times.
+            {{/view}}
+        </script>
+    </body>
+</html>
